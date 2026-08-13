@@ -1,8 +1,11 @@
 pipeline {
     agent any
 
-    stages {
+    triggers {
+        githubPush()
+    }
 
+    stages {
         stage('Setup Python') {
             steps {
                 sh 'python3 -m venv venv'
