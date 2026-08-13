@@ -21,5 +21,13 @@ pipeline {
                 sh 'docker build -t jenkins-cicd-practice:v1 .'
             }
         }
+
+        stage('Deploy Docker Container') {
+            steps {
+                sh 'docker stop jenkins-cicd-app || true'
+                sh 'docker rm jenkins-cicd-app || true'
+                sh 'docker run -d -p 5000:5000 --name jenkins-cicd-app jenkins-cicd-practice:v1'
+            }
+        }
     }
 }
