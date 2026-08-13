@@ -5,7 +5,7 @@ def test_home():
     client = app.test_client()
     response = client.get("/")
     assert response.status_code == 200
-    assert response.data == b"Hello from my automated CI/CD pipeline!"
+    assert response.data == b"Hello from my automated CI/CD pipeline - v2!"
 
 
 def test_health():
